@@ -1,0 +1,170 @@
+\begin{thebibliography}{10}
+
+\bibitem{Arnold:Gosling:96}
+K.~Arnold and J.~Gosling.
+\newblock {\em The {Java} Programming Language}.
+\newblock The Java Series. Addison-Wesley, Reading, Massachusetts, 1996.
+
+\bibitem{Bruce:97}
+K.~Bruce.
+\newblock Increasing {\Lang{java}}'s expressiveness with {thisType} and
+  match-bounded polymorphism.
+\newblock Available on the author's web page%
+  \footnote{\texttt{www.cs.williams.edu/\textasciitilde kim}}, 1997.
+
+\bibitem{Bruce:Cardeli:Castagna:96}
+K.~Bruce, L.~Cardeli, G.~Castagna, T.~H.~O. Group, G.~T. Leavens, and
+  B.~Pierce.
+\newblock On binary methods.
+\newblock {\em Theory and Practice of Object Systems}, 1(3), 1996.
+
+\bibitem{Bruce:Fiech:Peteresen:97}
+K.~Bruce, A.~Fiech, and L.~Peteresen.
+\newblock Subtyping is not a good match for object-oriented languages.
+\newblock In {\em Proceedings of the 11\textsuperscript{\textit{th}} European
+  Conference on Object-Oriented Programming\/} \cite{ECOOP:97}.
+
+\bibitem{Bruce:Fiech:Petersen:97}
+K.~B. Bruce, A.~Fiech, and L.~Petersen.
+\newblock Subtyping is not a good ``match'' for object-oriented languages.
+\newblock In {\em Proceedings of the 11\textsuperscript{\textit{th}} European
+  Conference on Object-Oriented Programming\/} \cite{ECOOP:97}.
+
+\bibitem{Bruce:Fiech:Schuett:vanGent:95}
+K.~B. Bruce, A.~Fiech, A.~Schuett, and R.~van Gent.
+\newblock Poly\uppercase{TOIL}: A type-safe polymorphic object-oriented
+  language.
+\newblock In {\em Proceedings of the 9\textsuperscript{\textit{th}} European
+  Conference on Object-Oriented Programming}, number 952 in Lecture Notes in
+  Computer Science, pages 27--51, Aarhus, Denmark, Aug. 7--11 1995. ECOOP'95,
+  Springer Verlag.
+
+\bibitem{Cardelli:Wegner:85}
+L.~Cardelli and P.~Wegner.
+\newblock On understanding types, data abstractions, and polymorphism.
+\newblock {\em ACM Comput. Surv.}, 17(4):471--522, Dec. 1985.
+
+\bibitem{Castagna:95}
+G.~Castagna.
+\newblock Covariance and contravariance: conflict without a cause.
+\newblock {\em ACM Trans. Prog. Lang. Syst.}, 17(3):431--447, 1995.
+
+\bibitem{Chambers:Leavens:95}
+C.~Chambers and G.~T. Leavens.
+\newblock Typechecking and modules for multi-methods.
+\newblock {\em ACM Trans. Prog. Lang. Syst.}, 17(6):805--843, 1995.
+
+\bibitem{Colnet:Liquori:00}
+D.~Colnet and L.~Liquori.
+\newblock {\em Match-{O}, a dialect of {Eiffel} with Match-Types}, pages
+  190--201.
+\newblock Prentice-Hall, Sydney, Australia, Nov. 20-23 2000.
+
+\bibitem{ECOOP:97}
+ECOOP'97.
+\newblock {\em Proceedings of the 11\textsuperscript{\textit{th}} European
+  Conference on Object-Oriented Programming}, number 1241 in Lecture Notes in
+  Computer Science, Jyv\"{a}skyl\"{a}, Finland, June 9-13 1997. Springer
+  Verlag.
+
+\bibitem{Gamma:Helm:Johnson:Vlissides:Book:95}
+E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides.
+\newblock {\em Design Patterns: Elements of Reusable Object-Oriented Software}.
+\newblock Professional Computing. Addison-Wesley, 1995.
+
+\bibitem{Gil:Gutterman:98}
+J.~Y. Gil and Z.~Gutterman.
+\newblock Compile time symbolic derivation with {\CC} templates.
+\newblock In {\em Proceedings of the 4\textsuperscript{th} Conference on
+  Ojbect-Oriented Technologies and Systems (COOTS)}, pages 249--262, Santa Fe,
+  New Mexico, Apr. 1998. USENIX.
+
+\bibitem{Goldberg:Robson:Book:83}
+A.~Goldberg and D.~Robson.
+\newblock {\em {Smalltalk}-80: The Language and its Implementation}.
+\newblock Addison-Wesley, Reading, Massachusetts, 1983.
+
+\bibitem{Gotsman:Surazhsky:01}
+C.~Gotsman and V.~Surazhsky.
+\newblock Guaranteed intersection-free polygon morphing.
+\newblock {\em Computers \& Graphics}, 25(1):67--75, Feb. 2001.
+
+\bibitem{Madsen:Moller-Pedersen:Nygaard:93}
+O.~L. Madsen, B.~M{\o}ller-Pedersen, and K.~Nygaard.
+\newblock {\em Object-Oriented Programming in the Beta Programming Language}.
+\newblock Addison-Wesley, 1993.
+
+\bibitem{Meyer:Eiffel:92}
+B.~Meyer.
+\newblock {\em {E}{IFFEL} the Language}.
+\newblock Object-Oriented Series. Prentice-Hall, Hemel Hempstead,
+  Hertfordshire, UK, 1992.
+
+\bibitem{Meyer:Book:92}
+B.~Meyer.
+\newblock {\em {EIFFEL}: The Language}.
+\newblock Object-Oriented Series. Prentice-Hall, 1992.
+
+\bibitem{Millstein:Chmabers:99}
+T.~Millstein and C.~Chambers.
+\newblock Modular statically typed multimethods.
+\newblock In {\em Proceedings of the 13\textsuperscript{\textit{th}} European
+  Conference on Object-Oriented Programming}, number 1628 in Lecture Notes in
+  Computer Science, pages 279--303, Lisbon, Portugal, June 14--18 1999.
+  ECOOP'99, Springer Verlag.
+
+\bibitem{Musser:Saini:96}
+D.~R. Musser and A.~Saini.
+\newblock {\em {STL} Tutorial and Reference Guide. {C++} Programming with the
+  Standart Template Library}.
+\newblock Addison-Wesley, 1996.
+
+\bibitem{Omohundro:94}
+S.~M. Omohundro.
+\newblock {\em The Sather 1.0 Specification}, Jan. 1994.
+
+\bibitem{Paulson:91}
+L.~C. Paulson.
+\newblock {\em {ML} for the Working Programmer}.
+\newblock Cambridge University Press, Cambridge, 1991.
+
+\bibitem{Rinat:00}
+R.~Rinat.
+\newblock Type-safe covariant specialization with generalized matching.
+\newblock In {\em The 7\textsuperscript{\it th} International Workshop on
+  Foundations of Object-Oriented Languages, FOOL 7}, Jan. 2000.
+
+\bibitem{Steele:90}
+G.~Steele.
+\newblock {\em Common Lisp the language}.
+\newblock Digital, 1990.
+
+\bibitem{Stroustrup:Book:91}
+B.~Stroustrup.
+\newblock {\em The {C++} Programming Language}.
+\newblock Addison-Wesley, 2\textsuperscript{\textit{nd}} edition, 1991.
+
+\bibitem{Stroustrup:Book:97}
+B.~Stroustrup.
+\newblock {\em The {C++} Programming Language}.
+\newblock Addison-Wesley, Reading, Massachusetts,
+  3\textsuperscript{\textit{rd}} edition, 1997.
+
+\bibitem{Szypersky:Omohundro:Murer:93}
+C.~Szypersky, S.~Omohundro, and S.~Murer.
+\newblock Engineering a programming language: The type and class system of
+  {Sather}.
+\newblock Technical Report TR-93-064, The International Computer Science
+  Institute, Berkeley, Ca, Nov. 1993.
+
+\bibitem{Watt:90}
+D.~A. Watt.
+\newblock {\em Programming Language: Concepts and Paradigms}.
+\newblock Prentice-Hall, 1990.
+
+\bibitem{Wirth:71}
+N.~Wirth.
+\newblock The programming language {Pascal}.
+\newblock {\em Acta Informatica}, 1:35--63, 1971.
+
+\end{thebibliography}

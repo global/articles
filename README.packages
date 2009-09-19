@@ -1,0 +1,27 @@
+README.packages
+===============
+
+These packages below must be installed to run all templates and articles in this repo.
+
+ii  html2text                             1.3.2a-5                       advanced HTML to text converter
+ii  latex-beamer                          3.07-1                         LaTeX class to produce presentations
+ii  latex-xcolor                          2.11-1                         Easy driver-independent TeX class for color
+ii  latex2html                            2002-2-1-20050114-6            LaTeX to HTML translator
+ii  openoffice.org-writer2latex           0.5-8                          Writer/Calc to LaTeX/XHTML converter extension for OpenOffice.or
+ii  tex-common                            1.11.3                         common infrastructure for building and installing TeX
+ii  texinfo                               4.11.dfsg.1-4                  Documentation system for on-line information and printed output
+ii  texlive-base                          2007.dfsg.2-1~lenny2           TeX Live: Essential programs and files
+ii  texlive-base-bin                      2007.dfsg.2-4+lenny1           TeX Live: Essential binaries
+ii  texlive-base-bin-doc                  2007.dfsg.2-4+lenny1           TeX Live: Documentation files for texlive-base-bin
+ii  texlive-common                        2007.dfsg.2-1~lenny2           TeX Live: Base component
+ii  texlive-doc-base                      2007.dfsg.2-1                  TeX Live: Base documentation
+ii  texlive-extra-utils                   2007.dfsg.2-4+lenny1           TeX Live: TeX auxiliary programs
+ii  texlive-fonts-recommended             2007.dfsg.2-1~lenny2           TeX Live: Recommended fonts
+ii  texlive-fonts-recommended-doc         2007.dfsg.2-1~lenny2           TeX Live: Documentation files for texlive-fonts-recommended
+ii  texlive-generic-recommended           2007.dfsg.2-1~lenny2           TeX Live: Miscellaneous generic macros
+ii  texlive-latex-base                    2007.dfsg.2-1~lenny2           TeX Live: Basic LaTeX packages
+ii  texlive-latex-base-doc                2007.dfsg.2-1~lenny2           TeX Live: Documentation files for texlive-latex-base
+ii  texlive-latex-recommended             2007.dfsg.2-1~lenny2           TeX Live: LaTeX recommended packages
+ii  texlive-latex-recommended-doc         2007.dfsg.2-1~lenny2           TeX Live: Documentation files for texlive-latex-recommended
+ii  texlive-pstricks                      2007.dfsg.17-1~lenny02         TeX Live: PSTricks packages
+ii  texlive-pstricks-doc                  2007.dfsg.17-1~lenny02         TeX Live: Documentation files for texlive-pstricks
