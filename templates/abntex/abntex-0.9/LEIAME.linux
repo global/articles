@@ -1,0 +1,66 @@
+$Header: /home/cvsroot/abntex/LEIAME.linux,v 1.6 2002/11/19 21:30:50 gweber Exp $
+
+Este pacote contém as classes LaTeX e estilos bibliográficos abnTeX.
+
+
+INSTALAÇÃO VIA RPM
+se você tem o seu tetex instalado em /usr/share/texmf você pode
+usar o pacote rpm da seguinte maneira:
+	rpm -i abnt-x.y-r.noarch.rpm
+(x.y é a versão e r o release)
+
+PRÉ-INSTALAÇÃO
+
+Se você está lendo este arquivo (LEIAME.linux) presume-se que já
+desempacotou o primeiro arquivo abntex-x.y.tgz (x.y é a versão).
+Senão:
+	tar -xvzf abntex-x.y.tgz
+isto cria um diretório abntex
+	cd abntex
+
+INSTALAÇÃO MANUAL
+
+Desempacote o arquivo abntex-texmf-x.y.tgz, se sua
+instalação tetex (diretório texmf) fica tipicamente em /usr/share
+	tar -C /usr/share -xvf abntex-texmf-x.y.tar
+
+Se sua distribuição coloca o tetex em outro local altere /usr/share de
+acordo. Para verificar o local de instalação:
+	kpsewhich --expand-path='$TEXMFMAIN'
+
+A estrutura de diretório segue a do tetex (linux, unix, Mac) ou do CD do
+TeX-Live. Debaixo do diretório texmf ficam bibtex, doc e latex.
+
+Para usar você pode copiar todos os sub-diretórios abntex para os
+respectivos diretórios na sua instalação LaTeX. Se você usa tetex
+você ainda deve executar texhash como root:
+	texhash
+
+INSTALAÇÃO VIA MAKE
+
+Você pode instalar o pacote usando
+	make install
+
+Se você está em dúvida sobre a localização da sua instalação tetex dÊ
+	make test
+para verificar o local de instalação.
+
+
+OBSERVAÇÕES
+
+Debian: esta distribuição coloca a documentação do tetex em /usr/share/doc/texmf
+ao invés de manter tudo sob /usr/share/texmf. O Makefile do abntex desempacota tudo
+debaixo do /usr/share/texmf. Isto não traz problemas à sua instalação, apenas fará
+com que a documentação do abntex não se encontre no mesmo local que o restante
+da documentação.
+
+ATUALIZAÇÕES
+
+Para atualização e mais informações veja:
+http://abntex.codigolivre.org.br
+
+LICENÇA:
+
+O pacote abntex é distribuido sob a licença
+LaTeXProject Public License (LPPL) http://www.latex-project.org/lppl.html
+Copyright 2001-2002 by the abnTeX group at http://abntex.codigolivre.org.br

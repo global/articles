@@ -1,0 +1,33 @@
+# $Header: /home/cvsroot/abntex/bin/geratss,v 1.2 2003/03/05 23:12:25 gweber Exp $
+# Copyright 2003 by the abnTeX group at http://codigolivre.org.br/projects/abntex
+#
+# Mantainer: Gerald Weber <gweber@codigolivre.org.br>
+#
+# This file is distributed under the LaTeXProject Public License (LPPL) http://www.latex-project.org/lppl.html
+# You are free to modify this file under the LPPL.
+#
+if [ "$1" == "" ]; then
+  echo "Uso: $0 <arquivo sem extensão>"
+  exit
+fi
+if [ -e $1.siglax ]; then
+  makeindex -s tabela-siglas.ist -o $1.sigla $1.siglax
+fi
+if [ -e $1.romanlowx ]; then
+  makeindex -s tabela-simbolos.ist -o $1.romanlow $1.romanlowx
+fi
+if [ -e $1.romanuppx ]; then
+  makeindex -s tabela-simbolos.ist -o $1.romanupp $1.romanuppx
+fi
+if [ -e $1.greeklowx ]; then
+  makeindex -s tabela-simbolos.ist -o $1.greeklow $1.greeklowx
+fi
+if [ -e $1.greekuppx ]; then
+  makeindex -s tabela-simbolos.ist -o $1.greekupp $1.greekuppx
+fi
+if [ -e $1.miscelanx ]; then
+  makeindex -s tabela-simbolos.ist -o $1.miscelan $1.miscelanx
+fi
+if [ -e $1.symbolsx ]; then
+  makeindex -s tabela-simbolos.ist -o $1.symbols $1.symbolsx
+fi
