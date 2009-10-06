@@ -1,0 +1,446 @@
+\documentclass[utf8,9pt]{beamer} 
+\usepackage[brazil]{babel}
+\usepackage{color}
+\usepackage{lmodern} % fontes modernas
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{pgfpages}
+\usepackage{mathptmx}
+\usepackage{helvet}
+
+%\pgfpageuselayout{resize to}[a4paper,border shrink=5mm,landscape]
+\title{Terminais "leves" X Multiterminais}
+\author{Anderson Goulart - global@codekab.com}
+\institute{uLevel.com}
+
+\usetheme{Warsaw}
+
+\pgfdeclareimage[height=4.5cm]{global}{figuras/global}
+\pgfdeclareimage[height=5.0cm]{multiterminais}{figuras/multiterminais}
+\pgfdeclareimage[height=3.5cm]{pc-tras}{figuras/pc-tras}
+\pgfdeclareimage[height=3.5cm]{pc-frente}{figuras/pc-frente}
+\pgfdeclareimage[height=4.0cm]{ltsp}{figuras/ltsp}
+\pgfdeclareimage[height=4.0cm]{drbl}{figuras/drbl}
+\pgfdeclareimage[height=5.0cm]{drblserver}{figuras/drblserver}
+%\logo{\pgfuseimage{logo}}
+
+\usecolortheme[RGB={1,152,183}]{structure}
+
+\setbeamertemplate{footline}
+{
+	\insertframenumber
+}
+
+
+\begin{document}
+
+	\begin{frame}
+		\titlepage
+	\end{frame}
+
+	  \begin{frame}
+		  \frametitle{Objetivos:}
+		  \begin{itemize}
+			  \item Multiterminais
+			  \item Linux Terminal Server Project
+			  \item Diskless Remote Boot in Linux (DRBL)
+			  \item Projetos na área
+			  \item Custos envolvidos
+			  \item Apresentação de um terminal em funcionamento
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \begin{center}
+			  \Huge{Multiterminais}
+			  \begin{figure}
+				  \pgfuseimage{multiterminais}
+			  \end{figure}
+		  \end{center}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{Multiterminais - introdução}
+		  Os multiterminais funcionam da seguinte maneira:
+		  \begin{itemize}
+			  \item 1 servidor
+			  \item 2 ou mais placas de vídeo
+			  \item 2 ou mais teclados
+			  \item 2 ou mais mouses
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{Multiterminais - características}
+		  Vantagens:
+		  \begin{itemize}
+			  \item Compartilhamento de recursos (home, software, etc)
+			  \item Instalação de software centralizada no servidor
+			  \item Não necessita dos recursos da rede
+			  \item Economia na compra dos equipamentos
+		  \end{itemize}
+
+		  Desvantagens:
+		  \begin{itemize}
+			  \item Não funciona com mouse/teclado diferente de USB
+			  \item O número de terminais depende da quantidade de placas de vídeo suportadas pelo seu computador
+			  \item A distância é limitada pelos cabos ligados ao servidor
+			  \item Difícil configuração
+			  \item Drivers não estão 100\%
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{Multiterminais - tecnologias}
+		  Quais tecnologias existem para esse tipo de solução?
+		  \begin{itemize}
+			  \item Xephyr: um X server que roda dentro de um X server
+			  \item Multiseat Xgl: um Xserver otimizado para aceleração 3d
+			  \item Xorg + GDM: X server tradicional com configurações personalizadas
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{Multiterminais - tecnologias}
+		  Qual a idéia de implantação? \\
+		  Mexer no xorg.conf
+		  \begin{small}
+		  \begin{block}{xorg.conf}
+			  Section "InputDevice" \\
+			  Identifier "Mouse0"\\
+			  Driver "mouse" \\
+			  Option "Protocol" "ImPS/2" \\
+			  Option "ZAxisMapping" "4 5" \\
+			  Option "Device" "/dev/input/mouse0" \\
+			  EndSection \\
+			  Section "InputDevice"\\
+			  Identifier "Mouse1"\\
+			  Driver "mouse"\\
+			  Option "Protocol" "ImPS/2"\\
+			  Option "ZAxisMapping" "4 5"\\
+			  Option "Device" "/dev/input/mouse1"\\
+			  EndSection
+			  ...
+			  Section "ServerLayout"\\
+			  Identifier "Layout1"\\
+			  Screen "Screen1" 0 0\\
+			  InputDevice "Keyboard1" "CoreKeyboard"\\
+			  InputDevice "Mouse1" "CorePointer"\\
+			  EndSection
+		  \end{block}
+		  \end{small}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{Multiterminais - tecnologias}
+		  E mexer no gdm.conf
+		  \begin{block}{gdm.conf}
+		  $[$servers$]$\\
+
+		  0=Standard0\\
+		  1=Standard1\\
+
+		  $[$server-Standard0$]$\\
+		  name=Standard server\\
+		  command=/usr/X11R6/bin/X0 -sharevts -layout Layout0 \# esse X0 é um link simbólico para o X\\
+		  flexible=false\\
+
+		  $[$server-Standard1$]$\\
+		  name=Standard server\\
+		  command=/usr/X11R6/bin/X1 -sharevts -layout Layout1 \# nome do layout do xorg.conf;\\
+		  flexible=false
+		  \end{block}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{Multilinux}
+		  No Brasil, temos um grupo que trabalha no desenvolvimento das tecnologias dos multiterminais: o \textbf{Multilinux}
+		  \begin{block}{Implementação dos multiterminais}
+		  O projeto MULTILINUX tem o objetivo de desenvolver tecnologia (scripts de instalação, automação do processo de instalação ou um LIVE CD) que permitam dividir um computador com GNU / Linux de maneira que vários usuário o utilizem ao mesmo tempo, em um ambiente gráfico, com sessões independentes. Uma excelente ferramenta para Inclusão Digital, ampliação de laboratórios, bibliotecas, quiosques de atendimento, telecentros e pequenas empresas.
+		  \end{block}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{Multiterminais - foto}
+		  
+		  \begin{columns}
+			  \column{.5\textwidth}
+				  \begin{figure}
+					  \pgfuseimage{pc-frente}
+					  \caption{Multilinux - visão frontal}
+				  \end{figure}
+
+			  \column{.5\textwidth}
+				  \begin{figure}
+					  \pgfuseimage{pc-tras}
+					  \caption{Multilinux - visão do gabinete}
+				  \end{figure}
+		  \end{columns}
+	  \end{frame}
+
+	  \begin{frame}
+		  \begin{center}
+			  \Huge{Linux Terminal Server Project}
+			  \begin{figure}
+				  \pgfuseimage{ltsp}
+				  \caption{LTSP Official Site}
+			  \end{figure}
+		  \end{center}
+	  \end{frame}
+
+
+	  \begin{frame}
+		  \frametitle{LTSP}
+		  O Linux Terminal Server Project tem como objetivo proporcionar um servidor em ambientes Linux para alimentar os chamados \textit{thinclients}.\\
+		  Um \textit{thinclient} ou terminal leve é um computador com recursos limitados: pouca memória, sem disco rígido, pouco processamento, etc.
+
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{LTSP- características}
+		  Vantagens:
+		  \begin{itemize}
+			  \item Compartilhamento de recursos (home, software, etc)
+			  \item Instalação de software centralizada no servidor
+			  \item É mais escalável que o modelo de multiterminais
+			  \item Economia na compra dos equipamentos
+			  \item Suporta maiores distâncias 
+			  \item Projeto maduro
+		  \end{itemize}
+
+		  Desvantagens:
+		  \begin{itemize}
+			  \item A rede é um gargalo
+			  \item Memória e CPU do servidor é outro gargalo
+			  \item Dificuldade de funcionamento de todos os dispositivos: cdrom, impressoras, pendrives
+			  \item Dificuldade de configuração: alta
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{LTSP - tecnologias}
+		  Quais tecnologias existem para esse tipo de solução?
+		  \begin{itemize}
+			  \item DHCP
+			  \item DNS
+			  \item TFTP
+			  \item NFS
+			  \item Sistemas de boot (PXE, Etherboot, etc)
+			  \item Pacotes LTSP
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{LTSP - versões}
+		  Existem 2 grandes versões:
+		  \begin{itemize}
+			  \item 4.2 \\
+				  Mais estável\\
+				  Suporte a dispositivos com diversas gambiarras\\
+				  LBE (LTSP Build Environment - chroot)
+				  
+			  \item 5.0 (Projeto MueKow)\\
+				  Integração com a distro\\
+				  Configuração simplificada\\
+				  Redução do número de pacotes a ser distribuído\\
+				  Novos mecanismos de comunicação com os dispositivos no cliente (ltspfs)\\
+				  Controle personalizado do cliente (ltsp-build-client, init scripts)
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{LTSP - Fotos}
+
+
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{LTSP - Projetos}
+		  Alguns projetos que utilizam LTSP:
+		  \begin{itemize}
+			  \item Projeto Casa Brasil
+			  \item Projeto Petrobrás
+			  \item UFMG
+		  \end{itemize}
+	  \end{frame}
+
+
+	  \begin{frame}
+		  \frametitle{LTSP - Fornecedores}
+		  Existem diversos fornecedores de thinclients atualmente no Brasil:
+		  \begin{itemize}
+			  \item Tecnoworld
+			  \item Connec
+			  \item Samurai
+			  \item Wise 
+		  \end{itemize}
+	  \end{frame}
+
+
+	  \begin{frame}
+		  \frametitle{LTSP - Custos}
+		  \begin{itemize}
+			  \item Valor do thinclient: R\$ 1.200,00
+			  \item Servidor: R\$ 4.000,00
+			  \item Total de equipamentos suportados por servidor: 20
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \begin{center}
+			  \Huge{Diskless Remote Boot in Linux (DRBL)}
+			  \begin{figure}
+				  \pgfuseimage{drbl}
+				  \caption{Logo DRBL}
+			  \end{figure}
+		  \end{center}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{DRBL - introdução}
+		  O DRBL oferece uma estrutura semelhante ao LTSP, entretanto, ele criar imagens personalizadas para cada cliente. \\
+		  A partir dessa idéia, os clientes são os responsáveis por executar as aplicações evitando o gargalo no servidor. \\
+		  Os arquivos são compartilhados via NFS e os clientes podem armazenar arquivos locais, caso se tenha um disco.
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{DRBL- características}
+		  Vantagens:
+		  \begin{itemize}
+			  \item Compartilhamento de recursos (home, software, etc)
+			  \item Instalação de software centralizada no servidor
+			  \item É mais escalável que o modelo do LTSP
+			  \item Suporta maiores distâncias 
+			  \item Projeto maduro e com suporte outras features (clonezilla)
+			  \item Configuração mais simples
+		  \end{itemize}
+
+		  Desvantagens:
+		  \begin{itemize}
+			  \item A rede é quase um gargalo
+			  \item Gargalo no NFS
+			  \item Os clientes tem que ser FAT (gordos)
+			  \item Os clientes são o gargalo
+			  \item Mais disco no servidor
+			  \item O script de configuração é tosko!
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{DRBL - tecnologias}
+		  Quais tecnologias existem para esse tipo de solução?
+		  \begin{itemize}
+			  \item DHCP
+			  \item DNS
+			  \item TFTP
+			  \item NFS
+			  \item Sistemas de boot (PXE, Etherboot, etc)
+			  \item Pacotes DRBL
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{DRBL - Fotos}
+		  \begin{center}
+			  \begin{figure}
+				  \pgfuseimage{drblserver}
+				  \caption{Servidor com DRBL}
+			  \end{figure}
+		  \end{center}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{DRBL - Projetos}
+		  Alguns projetos que utilizam DRBL:
+		  \begin{itemize}
+			  \item Escolas públicas 
+			  \item UFMG
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{DRBL - Custos}
+		  \begin{itemize}
+			  \item Valor do fatclient: R\$ 1.500,00
+			  \item Servidor: R\$ 4.000,00
+			  \item Total de equipamentos suportados por servidor: 40 (rede segmentada)
+		  \end{itemize}
+	  \end{frame}
+
+	  \begin{frame}
+		  \frametitle{Quadro comparativo}	
+		  \begin{center}
+			  \begin{table}[h!b!]
+			  \begin{tabular}{llll}
+			  \hline
+			  . & Multilinux & LTSP & DRBL \\
+			  \hline
+			  Escalável & $--$ & $+-$ & $++$ \\
+			  Custo & $+++$ & $+-$ & $++$ \\
+			  Dificuldade de implantação & $+++$ & $++$ & $--$ \\
+			  Gargalo na rede & $---$ & $+++$ & $+-$ \\
+			  Gargalo no disco & $++$ & $+-$ & $++$ \\
+			  Gargalo no cpu & $+++$ & $+++$ & $+-$\\
+			  Maturidade do projeto & $--$ & $++$ & $++$\\
+			  \hline
+			  \end{tabular}
+			  \caption{Comparação entre as tecnologias}
+			  \end{table}
+		  \end{center}
+	  \end{frame}
+
+	  \begin{frame}
+		  \begin{center}
+			  \Huge{Perguntas?}
+		  \end{center}
+	  \end{frame}
+
+  \begin{frame}
+	  \frametitle{Anderson Goulart}
+
+	  \begin{columns}
+		  \column{.5\textwidth}
+		  Contato:
+		  \begin{itemize}
+			  \item Jabber: globalx@jabber.org
+			  \item global@codekab.com
+		  \end{itemize}
+		  \column{.5\textwidth}
+			  \begin{figure}
+				  \pgfuseimage{global}
+				  \caption{Global phishing!}
+			  \end{figure}
+	  \end{columns}
+  \end{frame}
+
+	\begin{frame}
+		\frametitle{Referências}
+		Sites:
+		\begin{itemize}
+			\item http://listas.softwarelivre.org/cgi-bin/mailman/listinfo/multilinux
+			\item http://en.wikibooks.org/wiki/Multiterminal\_with\_Xephyr
+			\item http://tecnoworld.tempsite.ws/Thin\_Client.asp
+			\item http://www.ltsp.org/
+			\item http://www.connec.com.br/en/p01a.asp
+			\item http://www.jet.com.br/thinclientshop/
+			\item http://www.neoware.com/
+			\item http://drbl.sourceforge.net/
+		\end{itemize}
+
+	\end{frame}
+
+  \begin{frame}
+	  \frametitle{Licença}
+	  "Terminais 'leves' X Multiterminais" por Anderson Goulart está licenciado sob a Creative Commons Atribuição-Compartilhamento pela mesma Licença 2.5 Brasil License.\\
+
+	  http://creativecommons.org/licenses/by-sa/2.5/br/\\
+
+	  \begin{itemize}
+		  \item Fonte - http://github.com/global/articles
+	  \end{itemize}
+  \end{frame}
+
+
+
+\end{document}
+
